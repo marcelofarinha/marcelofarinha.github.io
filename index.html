@@ -1,320 +1,1372 @@
 <!DOCTYPE html>
-<html>
-<title>Farinha Dev - Home Page</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
-body, html {
-  height: 100%;
-  color: #777;
-  line-height: 1.8;
-}
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Curriculo profissional de Marcelo Henrique Bugula Farinha, Solutions Architect com foco em Oracle, integracoes, cloud e desenvolvimento de sistemas.">
+  <title>Marcelo Farinha | Solutions Architect</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f4;
+      --surface: #ffffff;
+      --surface-soft: #eef3ef;
+      --ink: #17201b;
+      --muted: #5f6c64;
+      --line: #dfe6df;
+      --accent: #0f766e;
+      --accent-dark: #0b4f4a;
+      --warm: #c47b34;
+      --shadow: 0 18px 45px rgba(23, 32, 27, 0.08);
+      --max: 1120px;
+    }
 
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: url('images/macbook.jpg');
-  min-height: 100%;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* Second image (Portfolio) */
-.bgimg-2 {
-  background-image: url("images/2monitores.jpg");
-  min-height: 400px;
-}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
 
-/* Third image (Contact) */
-.bgimg-3 {
-  background-image: url("images/nobaddays.jpg");
-  min-height: 400px;
-}
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-.w3-wide {letter-spacing: 10px;}
-.w3-hover-opacity {cursor: pointer;}
+    a {
+      color: inherit;
+      text-decoration-color: rgba(15, 118, 110, 0.4);
+      text-underline-offset: 4px;
+    }
 
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-    min-height: 400px;
-  }
-}
-</style>
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration-color: currentColor;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -48px;
+      z-index: 20;
+      border-radius: 6px;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 14px;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(223, 230, 223, 0.8);
+      background: rgba(247, 248, 244, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 0.9rem;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: var(--surface-soft);
+      color: var(--ink);
+      outline: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    .language-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 4px;
+    }
+
+    .language-switch button {
+      min-width: 38px;
+      height: 32px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 850;
+    }
+
+    .language-switch button[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    .hamburger {
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      position: absolute;
+      left: 0;
+    }
+
+    .hamburger::before {
+      top: -6px;
+    }
+
+    .hamburger::after {
+      top: 6px;
+    }
+
+    .section {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      padding: 84px 0;
+    }
+
+    .hero {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      padding: 76px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.75fr);
+      align-items: center;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--warm);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(2.4rem, 7vw, 4.9rem);
+    }
+
+    h2 {
+      max-width: 760px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    h3 {
+      font-size: 1.08rem;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border-radius: 8px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(15, 118, 110, 0.18);
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .portrait-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-panel img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .portrait-meta {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .portrait-meta strong {
+      font-size: 1.02rem;
+    }
+
+    .portrait-meta span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+      margin-top: 54px;
+    }
+
+    .fact {
+      background: var(--surface);
+      padding: 24px;
+    }
+
+    .fact strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      line-height: 1;
+    }
+
+    .fact span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .panel h3 {
+      margin-bottom: 14px;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 18px;
+    }
+
+    .timeline-item span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--warm);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .timeline-item p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      min-height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 22px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--accent-dark);
+      padding: 7px 10px;
+      font-size: 0.88rem;
+      font-weight: 750;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .cert-card {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 18px;
+      text-decoration: none;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cert-card:hover {
+      border-color: rgba(15, 118, 110, 0.45);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .badge-wrap {
+      display: grid;
+      place-items: center;
+      min-height: 148px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      background: #f5f7f2;
+    }
+
+    .badge-wrap img {
+      width: min(128px, 70%);
+      max-height: 128px;
+      object-fit: contain;
+    }
+
+    .cert-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .cert-card p {
+      margin: auto 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .cert-card.text-only {
+      justify-content: space-between;
+      min-height: 190px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7faf6 100%);
+    }
+
+    .cert-kicker {
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quote-band {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .quote-band .section {
+      padding: 70px 0;
+    }
+
+    .quote {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    .quote-mark {
+      color: var(--warm);
+      font-family: Georgia, serif;
+      font-size: 6rem;
+      line-height: 0.9;
+    }
+
+    .quote p {
+      margin: 0;
+      max-width: 840px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+      line-height: 1.45;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.66);
+      font-style: normal;
+      font-weight: 750;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list > li > a,
+    .contact-list > li > span {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 15px;
+      text-decoration: none;
+    }
+
+    .contact-icon {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--surface-soft);
+      color: var(--accent-dark);
+      font-weight: 900;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .split,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-panel {
+        max-width: 430px;
+      }
+
+      .quick-facts,
+      .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        min-height: 64px;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 72px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        padding: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .quick-facts,
+      .skills-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .fact {
+        padding: 20px;
+      }
+
+      .quote {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .quote-mark {
+        font-size: 4rem;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
 <body>
+  <a class="skip-link" href="#conteudo">Ir para o conteudo</a>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-      <i class="fa fa-bars"></i>
-    </a>
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i>SOBRE</a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PORTFÓLIO</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTATO</a>
-    <!--
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      <i class="fa fa-search"></i>
-    </a>
-    -->
-  </div>
-
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">SOBRE</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFÓLIO</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTATO</a>
-
- <!--   <a href="#" class="w3-bar-item w3-button">BUSCA</a> -->
-
-  </div>
-</div>
-
-<!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">FARINHA DEV</span>
-  </div>
-</div>
-
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">SOBRE</h3>
-  <p class="w3-center"><em>Apaixonado por tecnologia e programação</em></p>
-  <p>Sou Marcelo Henrique Bugula Farinha, Consultor de Sistemas na Retail Consult, onde atuo com integrações web e desenvolvimento de soluções tecnológicas para o setor de varejo. 
-     Com base em Marília, São Paulo, tenho me dedicado a transformar negócios através da tecnologia, trabalhando em uma empresa global de 300 profissionais que atende clientes ao redor do mundo.
-     Minha trajetória profissional é marcada pela busca constante por conhecimento e excelência técnica. 
-     Possuo formação acadêmica pela Univesp (Engenharia de Computação) e Univem (Engenharia de Produção) e mantenho um portfólio robusto de certificações que demonstram meu comprometimento com a atualização profissional contínua
-  </p>
-  <p>Sempre em constante evolução e aprendendo, atualmente estudo Apex, Java e Oracle Cloud Infrastructure, certificações abaixo: (clique no emblema para visualizar a certificação):</p> 
-  
-  
-  <div class="w3-row w3-center w3-light-grey" style="width: 100%;">
-    <div class="w3-col w3-section w3-center" style="width: 16.67%">
-      <a style="text-align: center;" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=5C8EF640A1BF5FE1FF47DE5FED7C831DD4EF2B0233CA9284DA83B6F9060C7330">
-      <img src="images/102_Oracle_Cloud_Infrastructure_Foundations_Associate.png" alt="Oracle Cloud Infrastructure Foundations 2021 Associate" style="width: 100%; text-align: center;">
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegacao principal">
+      <a class="brand" href="#inicio" aria-label="Marcelo Farinha">
+        <span class="brand-mark">MF</span>
+        <span>Marcelo Farinha</span>
       </a>
-    </div>
-    <div class="w3-col w3-section" style="width: 16.67%">
-      <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=9D5041FDFCE29F2A1420140E35A0E8449256EA7687332EB4DD4C382F81136E36">
-      <img src="images/103_Oracle_Cloud_Infrastructure_Architect_Associate.png" alt="Oracle Cloud Infrastructure 2021 Architect Associate" style="width: 100%;">
-      </a>
-    </div>
-    <div class="w3-col w3-section" style="width: 16.67%">
-      <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0F397C2E7192E5188063BD77E0C040BB04B2F1C328E6A4C3887357BB22D70387">
-      <img src="images/104_Oracle_Cloud_Infrastructure_Architect.png" alt="Oracle Cloud Infrastructure 2021 Architect Professional" style="width: 100%;">
-      </a>
-    </div>
-    <div class="w3-col w3-section" style="width: 16.67%">
-      <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=ABFDB71E9A63F5F9D3D1C609C9D75E50800AD80BE2ACBB4E2F2F960F40F90B7F">
-      <img src="images/108_Oracle_Cloud_Database_Migration_and_Integration.png" alt="Oracle Cloud Database Migration and Integration 2021 Certified Specialist" style="width: 100%;">
-      </a>
-    </div>
-    <div class="w3-col w3-section" style="width: 16.67%">
-      <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=5AC72D2A77FD57C3C1BD0FB1CDB2B868F7C2EFF738824BF77B408C2AADE17A28">
-      <img src="images/106_Oracle_Autonomous_Database_Cloud.png" alt="Oracle Autonomous Database Cloud 2021 Certified Specialist" style="width: 100%;">
-      </a>
-    </div>
-     <div class="w3-col w3-section w3-center" style="width: 16.67%">
-      <a style="text-align: center;" href="https://www.credly.com/badges/51b086d1-db6e-4521-a461-c7f0a3b62c5f/public_url">
-      <img src="images/azure-data-fundamentals-600x600.png" alt="Oracle Cloud Infrastructure Foundations 2021 Associate" style="width: 100%; text-align: center;">
-      </a>
-    </div>
-  </div>
-
-<!--
-  <div id="certs" class="w3-row">
-    <ul class="w3-ul w3-hoverable"></ul>
-      <li> <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0F397C2E7192E5188063BD77E0C040BB04B2F1C328E6A4C3887357BB22D70387"> Oracle Cloud Infrastructure 2021 Architect Professional</a></li>
-      <li> <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=ABFDB71E9A63F5F9D3D1C609C9D75E50800AD80BE2ACBB4E2F2F960F40F90B7F"> Oracle Cloud Database Migration and Integration 2021 Certified Specialist</a></li>  
-      <li> <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=5AC72D2A77FD57C3C1BD0FB1CDB2B868F7C2EFF738824BF77B408C2AADE17A28"> Oracle Autonomous Database Cloud 2021 Certified Specialist</a></li>
-      <li> <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=9D5041FDFCE29F2A1420140E35A0E8449256EA7687332EB4DD4C382F81136E36"> Oracle Cloud Infrastructure 2021 Architect Associate</a></li>
-      <li> <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=5C8EF640A1BF5FE1FF47DE5FED7C831DD4EF2B0233CA9284DA83B6F9060C7330"> Oracle Cloud Infrastructure Foundations 2021 Associate</a></li>
-    </ul>
-  </div>
--->
-  <div class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>Marcelo Henrique Bugula Farinha</b></p><br>
-      <img src="images/marcelo.jpeg" class="w3-round w3-image" alt="Photo of Me" width="300" height="333">
-    </div>
-
-    <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Bem-vindo ao meu website, construí este site com o objetivo de me apresentar profissionalmente a quem tiver interesse, e em breve produzir conteúdo sobre
-        Java, banco de dados Oracle e suas linguagens e também sobre OCI. Em breve lançarei uma série vídeos mostrando como configurar um website e outras aplicações no Oracle Cloud Infrastructure (OCI) Always Free, 
-        pois para pequenas aplicações como este website e talvez até aplicações um pouco maiores acredito que não seja necessário gastar com servidores em nuvem, sendo que existe uma parte gratuita do OCI que atende os requisitos.
-        Também vou colocar em breve aqui alguns vídeos de apresentação e um vídeo currículo. Também uma versão em inglês deste website.
-      </p>
-    </div>
-  </div>
-  <p class="w3-large w3-center w3-padding-16">Linguagens de programação e frameworks com as quais eu trabalho:</p>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Oracle PL/SQL</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">100%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Java (+Spring)</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:70%">70%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Python</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:70%">70%</div>
-  </div>
-  <p class="w3-large w3-center w3-padding-16">Outras tecnologias e linguagens:</p>
-  
-  <ul class="w3-ul w3-hoverable"></ul>
-    <li>Oracle Cloud Infrastructure, Oracle Forms, Oracle Reports, Oracle RMS, SAP Ariba </li>  
-    <li>HTML, CSS, JavaScript, PHP, Dart, C#</li>
-    <li>Azure Data Factory, Azure Function Apps, Azure Infra</li>
-    <li>Flutter, NodeJS, Laravel</li>
-    <li>Git, SVN, TFS, GitHub, BitBucket, Jira, AzureDevOps</li>
-  </ul>
-  
-</div>
-
-<div class="w3-row w3-center w3-dark-grey w3-padding-16"  id="portfolio">
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">5 Anos+ </span><br> 
-    Experiência com Oracle Database
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">5</span><br>
-    Certificações Oracle
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">200+</span><br>
-    Reuniões com clientes internos
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">250+</span><br>
-    Reuniões com clientes externos
-  </div>
-</div>
-
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">PORTFÓLIO</span>
-  </div>
-</div>
-
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64">
-  <h3 class="w3-center">MEU TRABALHO</h3>
-  <p class="w3-center"><em>A grande maioria do trabalho que desenvolvi é propriedade das empresas. Contudo em minha página do GitHub existem alguns projetos que desenvolvi para estudos.<br> Clique na imagem abaixo para ser redirecionado para meu repositório do GitHub.</em></p><br>
-
-  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-  <div class="w3-row-padding w3-center">
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <a href="https://github.com/marcelofarinha/" title="github.com/marcelofarinha" target="_blank">
-      <img class="w3-image" src="images/GitHub-Logo.png" alt="GitHub Logo" style="width: 40%;">
-    </a>
-    <!--
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">GITHUB</button>
-    -->
-  </div>
-</div>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">CONTATO</span>
-  </div>
-</div>
-
-<!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">ONDE TRABALHO</h3>
-  <p></p>
-  <p class="w3-center"><em><a href="https://retail-consult.com ">Retail Consult</em></p>
-
-  <div class="w3-row w3-padding-32 w3-section">
-    
-    <div class="w3-col m2 w3-container">
-      
-    </div>
-    
-    <div class="w3-col m8 w3-panel w3-center">
-      <div class="w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Curitiba, PR (Remoto em Marília, SP), Brasil<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +55 14 997504433<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: marcelofarinha@live.com<br>
+      <div class="nav-links" id="menu">
+        <a href="#perfil">Perfil</a>
+        <a href="#competencias">Competencias</a>
+        <a href="#certificacoes">Certificacoes</a>
+        <a href="#contato">Contato</a>
       </div>
-      <p>Me contate para tomar um café <i class="fa fa-coffee"></i>, ou deixe-me um recado por e-mail</p>
-      <a href="mailto:marcelo@farinha.dev">ENVIAR EMAIL</a>
+      <div class="language-switch" aria-label="Selecionar idioma">
+        <button type="button" data-set-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Solutions Architect</p>
+          <h1>Arquitetura de solucoes Oracle, cloud e integracoes para varejo enterprise.</h1>
+          <p class="lead">Sou Marcelo Henrique Bugula Farinha, Solutions Architect na Retail Consult, com 8 anos de experiencia em tecnologia, 8 anos com Oracle Database e 3 anos com Oracle Cloud em solucoes Oracle Retail.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:marcelofarinha@live.com">Enviar email</a>
+            <a class="button secondary" href="https://www.linkedin.com/in/marcelo-farinha" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="button secondary" href="https://github.com/marcelofarinha" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="button secondary" href="curriculo/Profile.pdf" target="_blank" rel="noreferrer">Curriculo PDF</a>
+          </div>
+        </div>
+
+        <aside class="portrait-panel" aria-label="Resumo profissional">
+          <img src="images/marcelo.jpeg" alt="Marcelo Henrique Bugula Farinha">
+          <div class="portrait-meta">
+            <strong>Marcelo Henrique Bugula Farinha</strong>
+            <span>Curitiba, PR &middot; Remoto em Marilia, SP</span>
+            <span>Portugues e ingles fluentes &middot; espanhol basico a intermediario</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="quick-facts" aria-label="Indicadores profissionais">
+        <div class="fact">
+          <strong>8</strong>
+          <span>anos de experiencia total</span>
+        </div>
+        <div class="fact">
+          <strong>8</strong>
+          <span>anos com Oracle Database</span>
+        </div>
+        <div class="fact">
+          <strong>3</strong>
+          <span>anos com Oracle Cloud</span>
+        </div>
+        <div class="fact">
+          <strong>MFCS+</strong>
+          <span>Oracle Retail Cloud Services</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="perfil">
+      <div class="section-heading">
+        <p class="eyebrow">Perfil</p>
+        <h2>Carreira orientada por arquitetura, banco de dados, sistemas corporativos e melhoria continua.</h2>
+        <p>Atuo transformando requisitos de negocio em solucoes tecnicas sustentaveis, com foco em Oracle Retail, MFCS, SIOCS, CECS, OBCS, XOCS, RESA, REIMCS, integracoes, APIs e modernizacao de sistemas usados por times globais.</p>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Como trabalho</h3>
+          <p>Gosto de problemas complexos, comunicacao clara com stakeholders e solucoes que equilibram confiabilidade, manutencao e velocidade de entrega. Minha trajetoria combina arquitetura de solucoes, desenvolvimento, suporte a sistemas criticos e colaboracao com clientes globais.</p>
+        </div>
+
+        <div class="timeline" aria-label="Experiencia e formacao">
+          <article class="timeline-item">
+            <span>Atual</span>
+            <h3>Solutions Architect &middot; Retail Consult</h3>
+            <p>Arquitetura de solucoes para varejo enterprise, com desenho e implementacao de integracoes para Oracle MFCS, SIOCS, CECS, OBCS, XOCS, RESA e REIMCS usando Java, PL/SQL e Oracle Cloud.</p>
+          </article>
+          <article class="timeline-item">
+            <span>Jun. 2023 - Mai. 2026</span>
+            <h3>Systems Consultant &middot; Retail Consult</h3>
+            <p>Integracao de sistemas cloud e on-prem para clientes como Hibbett Sports, liderando desenho, desenvolvimento e reunioes com clientes em projetos paralelos ao projeto principal.</p>
+          </article>
+          <article class="timeline-item">
+            <span>Mai. 2022 - Jun. 2023</span>
+            <h3>Consultant | Senior Systems Analyst &middot; Pantheon / ExxonMobil</h3>
+            <p>Suporte e evolucao de sistemas Ariba em Java, ambientes de producao e homologacao, relatorios, Azure Data Factory e Azure Function Apps em time global.</p>
+          </article>
+          <article class="timeline-item">
+            <span>2018 - 2022</span>
+            <h3>Senior Systems Analyst | Tech Lead | IT Analyst</h3>
+            <p>Atuacao em Matera, Wipro e Tauste com Java, Spring Boot, Oracle SQL, PL/SQL, Swagger, Oracle Advanced Queue, OSB, Oracle Forms, Oracle Reports, Node.js e Python.</p>
+          </article>
+          <article class="timeline-item">
+            <span>2017 - 2023</span>
+            <h3>Engenharia de Computacao &middot; Univesp Oficial</h3>
+            <p>Formacao academica em tecnologia, engenharia e fundamentos de sistemas computacionais.</p>
+          </article>
+          <article class="timeline-item">
+            <span>2012 - 2016</span>
+            <h3>Engenharia de Producao &middot; Univem</h3>
+            <p>Base em processos, gestao, melhoria continua e analise operacional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="competencias">
+      <div class="section-heading">
+        <p class="eyebrow">Competencias</p>
+        <h2>Stack tecnico com base forte em arquitetura de solucoes, Oracle e integracoes.</h2>
+        <p>As qualificacoes abaixo consolidam as top skills e tecnologias presentes no curriculo do LinkedIn.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card">
+          <h3>Oracle e arquitetura</h3>
+          <ul class="tag-list">
+            <li>Solutions Engineering</li>
+            <li>Oracle Database</li>
+            <li>Oracle Database Administration</li>
+            <li>PL/SQL</li>
+            <li>MFCS</li>
+            <li>SIOCS</li>
+            <li>CECS</li>
+            <li>OBCS</li>
+            <li>XOCS</li>
+            <li>RESA</li>
+            <li>REIMCS</li>
+            <li>Oracle Forms</li>
+            <li>Oracle Reports</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Desenvolvimento</h3>
+          <ul class="tag-list">
+            <li>Java</li>
+            <li>Java Development</li>
+            <li>Spring</li>
+            <li>Python</li>
+            <li>JavaScript</li>
+            <li>Vue.js</li>
+            <li>Node.js</li>
+            <li>PHP</li>
+            <li>C#</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Cloud e integracoes</h3>
+          <ul class="tag-list">
+            <li>Oracle Cloud Infrastructure</li>
+            <li>Azure Data Factory</li>
+            <li>Azure Function Apps</li>
+            <li>APIs</li>
+            <li>Swagger</li>
+            <li>MongoDB</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Varejo e corporativo</h3>
+          <ul class="tag-list">
+            <li>Retail Consult</li>
+            <li>Oracle Retail</li>
+            <li>SAP Ariba</li>
+            <li>Sistemas criticos</li>
+            <li>Suporte tecnico</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Ferramentas</h3>
+          <ul class="tag-list">
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Bitbucket</li>
+            <li>Jira</li>
+            <li>Azure DevOps</li>
+            <li>TFS</li>
+            <li>SVN</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Idiomas</h3>
+          <ul class="tag-list">
+            <li>Portugues nativo</li>
+            <li>Ingles fluente</li>
+            <li>Espanhol basico/intermediario</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="certificacoes">
+      <div class="section-heading">
+        <p class="eyebrow">Certificacoes</p>
+        <h2>Certificacoes e qualificacoes alinhadas ao LinkedIn e aos badges publicos.</h2>
+        <p>Os emblemas abrem as credenciais publicas quando disponiveis. Tambem inclui cursos e certificacoes listados publicamente no LinkedIn.</p>
+      </div>
+
+      <div class="cert-grid">
+        <a class="cert-card" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0F397C2E7192E5188063BD77E0C040BB04B2F1C328E6A4C3887357BB22D70387" target="_blank" rel="noreferrer">
+          <div class="badge-wrap">
+            <img src="images/104_Oracle_Cloud_Infrastructure_Architect.png" alt="Oracle Cloud Infrastructure Architect Professional badge">
+          </div>
+          <h3>Oracle Cloud Infrastructure 2021 Architect Professional</h3>
+          <p>Oracle &middot; credencial publica</p>
+        </a>
+        <a class="cert-card" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=9D5041FDFCE29F2A1420140E35A0E8449256EA7687332EB4DD4C382F81136E36" target="_blank" rel="noreferrer">
+          <div class="badge-wrap">
+            <img src="images/103_Oracle_Cloud_Infrastructure_Architect_Associate.png" alt="Oracle Cloud Infrastructure Architect Associate badge">
+          </div>
+          <h3>Oracle Cloud Infrastructure 2021 Architect Associate</h3>
+          <p>Oracle &middot; credencial publica</p>
+        </a>
+        <a class="cert-card" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=5C8EF640A1BF5FE1FF47DE5FED7C831DD4EF2B0233CA9284DA83B6F9060C7330" target="_blank" rel="noreferrer">
+          <div class="badge-wrap">
+            <img src="images/102_Oracle_Cloud_Infrastructure_Foundations_Associate.png" alt="Oracle Cloud Infrastructure Foundations Associate badge">
+          </div>
+          <h3>Oracle Cloud Infrastructure Foundations 2021 Certified Associate</h3>
+          <p>Oracle &middot; emitido em dez. 2021</p>
+        </a>
+        <a class="cert-card" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=5AC72D2A77FD57C3C1BD0FB1CDB2B868F7C2EFF738824BF77B408C2AADE17A28" target="_blank" rel="noreferrer">
+          <div class="badge-wrap">
+            <img src="images/106_Oracle_Autonomous_Database_Cloud.png" alt="Oracle Autonomous Database Cloud badge">
+          </div>
+          <h3>Oracle Autonomous Database Cloud 2021 Certified Specialist</h3>
+          <p>Oracle &middot; emitido em dez. 2021</p>
+        </a>
+        <a class="cert-card" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=ABFDB71E9A63F5F9D3D1C609C9D75E50800AD80BE2ACBB4E2F2F960F40F90B7F" target="_blank" rel="noreferrer">
+          <div class="badge-wrap">
+            <img src="images/108_Oracle_Cloud_Database_Migration_and_Integration.png" alt="Oracle Cloud Database Migration and Integration badge">
+          </div>
+          <h3>Oracle Cloud Database Migration and Integration 2021 Certified Specialist</h3>
+          <p>Oracle &middot; credencial publica</p>
+        </a>
+        <a class="cert-card" href="https://www.credly.com/badges/51b086d1-db6e-4521-a461-c7f0a3b62c5f/public_url" target="_blank" rel="noreferrer">
+          <div class="badge-wrap">
+            <img src="images/azure-data-fundamentals-600x600.png" alt="Microsoft Azure Data Fundamentals badge">
+          </div>
+          <h3>Microsoft Certified: Azure Data Fundamentals</h3>
+          <p>Microsoft &middot; Credly</p>
+        </a>
+        <article class="cert-card text-only">
+          <span class="cert-kicker">Oracle</span>
+          <h3>Oracle Cloud Infrastructure 2023 AI Certified Foundations Associate</h3>
+          <p>Certificacao compartilhada no LinkedIn.</p>
+        </article>
+        <article class="cert-card text-only">
+          <span class="cert-kicker">Alura</span>
+          <h3>Swagger: Documentando suas APIs</h3>
+          <p>Curso listado no LinkedIn &middot; emitido em dez. 2021.</p>
+        </article>
+        <article class="cert-card text-only">
+          <span class="cert-kicker">LinkedIn Learning</span>
+          <h3>Learning MongoDB</h3>
+          <p>Curso listado no LinkedIn &middot; emitido em out. 2021.</p>
+        </article>
+        <article class="cert-card text-only">
+          <span class="cert-kicker">Oracle</span>
+          <h3>Oracle Forms 6i</h3>
+          <p>Certificacao listada no curriculo do LinkedIn.</p>
+        </article>
+        <article class="cert-card text-only">
+          <span class="cert-kicker">Agile</span>
+          <h3>Agile Development Practices</h3>
+          <p>Certificacao listada no curriculo do LinkedIn.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-band" aria-label="Recomendacao profissional">
+      <div class="section">
+        <div class="quote">
+          <div class="quote-mark">&ldquo;</div>
+          <div>
+            <p>&ldquo;Reconhecido por dominio em banco de dados, consultas complexas, apoio a times senior, comunicacao frequente com clientes globais e compromisso em situacoes criticas de producao.&rdquo;</p>
+            <cite>Resumo de recomendacao publica no LinkedIn</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="section-heading">
+        <p class="eyebrow">Contato</p>
+        <h2>Vamos conversar sobre sistemas, dados e integracoes.</h2>
+      </div>
+
+      <div class="contact-layout">
+        <div class="panel">
+          <h3>Disponivel para networking profissional</h3>
+          <p>Entre em contato para oportunidades, parcerias tecnicas, conversas sobre Oracle, cloud, varejo ou desenvolvimento de sistemas corporativos.</p>
+        </div>
+
+        <ul class="contact-list">
+          <li>
+            <a href="mailto:marcelofarinha@live.com">
+              <span class="contact-icon">@</span>
+              <span>marcelofarinha@live.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+5514997504433">
+              <span class="contact-icon">Tel</span>
+              <span>+55 14 99750-4433</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/marcelo-farinha" target="_blank" rel="noreferrer">
+              <span class="contact-icon">in</span>
+              <span>linkedin.com/in/marcelo-farinha</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/marcelofarinha" target="_blank" rel="noreferrer">
+              <span class="contact-icon">GH</span>
+              <span>github.com/marcelofarinha</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>&copy; <span id="year"></span> Marcelo Henrique Bugula Farinha</span>
+      <div class="footer-links">
+        <a href="#inicio">Topo</a>
+        <a href="https://www.instagram.com/marcelofarinha/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://twitter.com/marcelofarinha6/" target="_blank" rel="noreferrer">Twitter</a>
+      </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Para o topo</a>
-  <div class="w3-xlarge w3-section">
-    <!--<i class="fa fa-facebook-official w3-hover-opacity"></i>-->
-    <a href="https://www.instagram.com/marcelofarinha/" title="instagram.com/marcelofarinha" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
-    <a href="https://twitter.com/marcelofarinha6/" title="twitter.com/marcelofarinha6" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
-    <a href="https://www.linkedin.com/in/marcelo-farinha" title="linkedin.com/in/marcelo-farinha" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
-    <a href="https://www.github.com/marcelofarinha" title="github.com/marcelofarinha" target="_blank"><i class="fa fa-github w3-hover-opacity"></i></a>
-    <!--<i class="fa fa-snapchat w3-hover-opacity"></i>-->
-    <!--<i class="fa fa-pinterest-p w3-hover-opacity"></i>-->    
-    <!--<i class="fa fa-linkedin w3-hover-opacity"></i>-->
-  </div>
-</footer>
- 
-<script>
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector("#menu");
+    const languageButtons = document.querySelectorAll("[data-set-lang]");
 
+    const menuLabels = {
+      pt: {
+        open: "Abrir menu",
+        close: "Fechar menu"
+      },
+      en: {
+        open: "Open menu",
+        close: "Close menu"
+      }
+    };
 
-// Change style of navbar on scroll
-window.onscroll = function() {myFunction()};
-function myFunction() {
-    var navbar = document.getElementById("myNavbar");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-    } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    const translations = {
+      pt: {
+        title: "Marcelo Farinha | Solutions Architect",
+        description: "Curriculo profissional de Marcelo Henrique Bugula Farinha, Solutions Architect com foco em Oracle, integracoes, cloud e desenvolvimento de sistemas.",
+        attributes: {
+          "nav.nav": { "aria-label": "Navegacao principal" },
+          ".brand": { "aria-label": "Marcelo Farinha" },
+          ".portrait-panel": { "aria-label": "Resumo profissional" },
+          ".quick-facts": { "aria-label": "Indicadores profissionais" },
+          ".timeline": { "aria-label": "Experiencia e formacao" },
+          ".quote-band": { "aria-label": "Recomendacao profissional" },
+          ".language-switch": { "aria-label": "Selecionar idioma" }
+        },
+        text: {
+          ".skip-link": "Ir para o conteudo",
+          "#menu a:nth-child(1)": "Perfil",
+          "#menu a:nth-child(2)": "Competencias",
+          "#menu a:nth-child(3)": "Certificacoes",
+          "#menu a:nth-child(4)": "Contato",
+          ".hero .eyebrow": "Solutions Architect",
+          ".hero h1": "Arquitetura de solucoes Oracle, cloud e integracoes para varejo enterprise.",
+          ".hero .lead": "Sou Marcelo Henrique Bugula Farinha, Solutions Architect na Retail Consult, com 8 anos de experiencia em tecnologia, 8 anos com Oracle Database e 3 anos com Oracle Cloud em solucoes Oracle Retail.",
+          ".hero-actions .primary": "Enviar email",
+          ".hero-actions a:nth-child(4)": "Curriculo PDF",
+          ".portrait-meta span:nth-of-type(1)": "Curitiba, PR &middot; Remoto em Marilia, SP",
+          ".portrait-meta span:nth-of-type(2)": "Portugues e ingles fluentes &middot; espanhol basico a intermediario",
+          ".quick-facts .fact:nth-child(1) span": "anos de experiencia total",
+          ".quick-facts .fact:nth-child(2) strong": "8",
+          ".quick-facts .fact:nth-child(2) span": "anos com Oracle Database",
+          ".quick-facts .fact:nth-child(3) strong": "3",
+          ".quick-facts .fact:nth-child(3) span": "anos com Oracle Cloud",
+          ".quick-facts .fact:nth-child(4) strong": "MFCS+",
+          ".quick-facts .fact:nth-child(4) span": "Oracle Retail Cloud Services",
+          "#perfil .section-heading .eyebrow": "Perfil",
+          "#perfil h2": "Carreira orientada por arquitetura, banco de dados, sistemas corporativos e melhoria continua.",
+          "#perfil .section-heading p:last-child": "Atuo transformando requisitos de negocio em solucoes tecnicas sustentaveis, com foco em Oracle Retail, MFCS, SIOCS, CECS, OBCS, XOCS, RESA, REIMCS, integracoes, APIs e modernizacao de sistemas usados por times globais.",
+          "#perfil .panel h3": "Como trabalho",
+          "#perfil .panel p": "Gosto de problemas complexos, comunicacao clara com stakeholders e solucoes que equilibram confiabilidade, manutencao e velocidade de entrega. Minha trajetoria combina arquitetura de solucoes, desenvolvimento, suporte a sistemas criticos e colaboracao com clientes globais.",
+          ".timeline-item:nth-child(1) span": "Atual",
+          ".timeline-item:nth-child(1) h3": "Solutions Architect &middot; Retail Consult",
+          ".timeline-item:nth-child(1) p": "Arquitetura de solucoes para varejo enterprise, com desenho e implementacao de integracoes para Oracle MFCS, SIOCS, CECS, OBCS, XOCS, RESA e REIMCS usando Java, PL/SQL e Oracle Cloud.",
+          ".timeline-item:nth-child(2) span": "Jun. 2023 - Mai. 2026",
+          ".timeline-item:nth-child(2) h3": "Systems Consultant &middot; Retail Consult",
+          ".timeline-item:nth-child(2) p": "Integracao de sistemas cloud e on-prem para clientes como Hibbett Sports, liderando desenho, desenvolvimento e reunioes com clientes em projetos paralelos ao projeto principal.",
+          ".timeline-item:nth-child(3) span": "Mai. 2022 - Jun. 2023",
+          ".timeline-item:nth-child(3) h3": "Consultant | Senior Systems Analyst &middot; Pantheon / ExxonMobil",
+          ".timeline-item:nth-child(3) p": "Suporte e evolucao de sistemas Ariba em Java, ambientes de producao e homologacao, relatorios, Azure Data Factory e Azure Function Apps em time global.",
+          ".timeline-item:nth-child(4) span": "2018 - 2022",
+          ".timeline-item:nth-child(4) h3": "Senior Systems Analyst | Tech Lead | IT Analyst",
+          ".timeline-item:nth-child(4) p": "Atuacao em Matera, Wipro e Tauste com Java, Spring Boot, Oracle SQL, PL/SQL, Swagger, Oracle Advanced Queue, OSB, Oracle Forms, Oracle Reports, Node.js e Python.",
+          ".timeline-item:nth-child(5) h3": "Engenharia de Computacao &middot; Univesp Oficial",
+          ".timeline-item:nth-child(5) p": "Formacao academica em tecnologia, engenharia e fundamentos de sistemas computacionais.",
+          ".timeline-item:nth-child(6) h3": "Engenharia de Producao &middot; Univem",
+          ".timeline-item:nth-child(6) p": "Base em processos, gestao, melhoria continua e analise operacional.",
+          "#competencias .section-heading .eyebrow": "Competencias",
+          "#competencias h2": "Stack tecnico com base forte em arquitetura de solucoes, Oracle e integracoes.",
+          "#competencias .section-heading p:last-child": "As qualificacoes abaixo consolidam as top skills e tecnologias presentes no curriculo do LinkedIn.",
+          ".skill-card:nth-child(1) h3": "Oracle e arquitetura",
+          ".skill-card:nth-child(2) h3": "Desenvolvimento",
+          ".skill-card:nth-child(3) h3": "Cloud e integracoes",
+          ".skill-card:nth-child(4) h3": "Varejo e corporativo",
+          ".skill-card:nth-child(4) li:nth-child(4)": "Sistemas criticos",
+          ".skill-card:nth-child(4) li:nth-child(5)": "Suporte tecnico",
+          ".skill-card:nth-child(5) h3": "Ferramentas",
+          ".skill-card:nth-child(6) h3": "Idiomas",
+          ".skill-card:nth-child(6) li:nth-child(1)": "Portugues nativo",
+          ".skill-card:nth-child(6) li:nth-child(2)": "Ingles fluente",
+          ".skill-card:nth-child(6) li:nth-child(3)": "Espanhol basico/intermediario",
+          "#certificacoes .section-heading .eyebrow": "Certificacoes",
+          "#certificacoes h2": "Certificacoes e qualificacoes alinhadas ao LinkedIn e aos badges publicos.",
+          "#certificacoes .section-heading p:last-child": "Os emblemas abrem as credenciais publicas quando disponiveis. Tambem inclui cursos e certificacoes listados publicamente no LinkedIn.",
+          ".cert-card:nth-child(1) p": "Oracle &middot; credencial publica",
+          ".cert-card:nth-child(2) p": "Oracle &middot; credencial publica",
+          ".cert-card:nth-child(3) p": "Oracle &middot; emitido em dez. 2021",
+          ".cert-card:nth-child(4) p": "Oracle &middot; emitido em dez. 2021",
+          ".cert-card:nth-child(5) p": "Oracle &middot; credencial publica",
+          ".cert-card:nth-child(7) p": "Certificacao compartilhada no LinkedIn.",
+          ".cert-card:nth-child(8) h3": "Swagger: Documentando suas APIs",
+          ".cert-card:nth-child(8) p": "Curso listado no LinkedIn &middot; emitido em dez. 2021.",
+          ".cert-card:nth-child(9) p": "Curso listado no LinkedIn &middot; emitido em out. 2021.",
+          ".cert-card:nth-child(10) p": "Certificacao listada no curriculo do LinkedIn.",
+          ".cert-card:nth-child(11) p": "Certificacao listada no curriculo do LinkedIn.",
+          ".quote p": "&ldquo;Reconhecido por dominio em banco de dados, consultas complexas, apoio a times senior, comunicacao frequente com clientes globais e compromisso em situacoes criticas de producao.&rdquo;",
+          ".quote cite": "Resumo de recomendacao publica no LinkedIn",
+          "#contato .section-heading .eyebrow": "Contato",
+          "#contato h2": "Vamos conversar sobre sistemas, dados e integracoes.",
+          "#contato .panel h3": "Disponivel para networking profissional",
+          "#contato .panel p": "Entre em contato para oportunidades, parcerias tecnicas, conversas sobre Oracle, cloud, varejo ou desenvolvimento de sistemas corporativos.",
+          ".footer-links a:nth-child(1)": "Topo"
+        }
+      },
+      en: {
+        title: "Marcelo Farinha | Solutions Architect",
+        description: "Professional resume for Marcelo Henrique Bugula Farinha, Solutions Architect focused on Oracle, integrations, cloud and software development.",
+        attributes: {
+          "nav.nav": { "aria-label": "Main navigation" },
+          ".brand": { "aria-label": "Marcelo Farinha" },
+          ".portrait-panel": { "aria-label": "Professional summary" },
+          ".quick-facts": { "aria-label": "Professional highlights" },
+          ".timeline": { "aria-label": "Experience and education" },
+          ".quote-band": { "aria-label": "Professional recommendation" },
+          ".language-switch": { "aria-label": "Select language" }
+        },
+        text: {
+          ".skip-link": "Skip to content",
+          "#menu a:nth-child(1)": "Profile",
+          "#menu a:nth-child(2)": "Skills",
+          "#menu a:nth-child(3)": "Certifications",
+          "#menu a:nth-child(4)": "Contact",
+          ".hero .eyebrow": "Solutions Architect",
+          ".hero h1": "Oracle solution architecture, cloud and integrations for enterprise retail.",
+          ".hero .lead": "I am Marcelo Henrique Bugula Farinha, a Solutions Architect at Retail Consult with 8 years of total technology experience, 8 years with Oracle Database and 3 years with Oracle Cloud in Oracle Retail solutions.",
+          ".hero-actions .primary": "Email me",
+          ".hero-actions a:nth-child(4)": "Resume PDF",
+          ".portrait-meta span:nth-of-type(1)": "Curitiba, PR &middot; Remote from Marilia, SP",
+          ".portrait-meta span:nth-of-type(2)": "Fluent Portuguese and English &middot; basic/intermediate Spanish",
+          ".quick-facts .fact:nth-child(1) span": "years of total experience",
+          ".quick-facts .fact:nth-child(2) strong": "8",
+          ".quick-facts .fact:nth-child(2) span": "years with Oracle Database",
+          ".quick-facts .fact:nth-child(3) strong": "3",
+          ".quick-facts .fact:nth-child(3) span": "years with Oracle Cloud",
+          ".quick-facts .fact:nth-child(4) strong": "MFCS+",
+          ".quick-facts .fact:nth-child(4) span": "Oracle Retail Cloud Services",
+          "#perfil .section-heading .eyebrow": "Profile",
+          "#perfil h2": "A career shaped by architecture, databases, enterprise systems and continuous improvement.",
+          "#perfil .section-heading p:last-child": "I turn business requirements into sustainable technical solutions, focused on Oracle Retail, MFCS, SIOCS, CECS, OBCS, XOCS, RESA, REIMCS, integrations, APIs and modernization for global teams.",
+          "#perfil .panel h3": "How I work",
+          "#perfil .panel p": "I enjoy complex problems, clear communication with stakeholders and solutions that balance reliability, maintainability and delivery speed. My background combines solution architecture, development, critical systems support and collaboration with global clients.",
+          ".timeline-item:nth-child(1) span": "Current",
+          ".timeline-item:nth-child(1) h3": "Solutions Architect &middot; Retail Consult",
+          ".timeline-item:nth-child(1) p": "Solution architecture for enterprise retail, designing and implementing integrations for Oracle MFCS, SIOCS, CECS, OBCS, XOCS, RESA and REIMCS using Java, PL/SQL and Oracle Cloud.",
+          ".timeline-item:nth-child(2) span": "Jun. 2023 - May 2026",
+          ".timeline-item:nth-child(2) h3": "Systems Consultant &middot; Retail Consult",
+          ".timeline-item:nth-child(2) p": "Integrated cloud and on-prem systems for clients such as Hibbett Sports, leading design, development and customer meetings in projects running alongside the main Retail Consult project.",
+          ".timeline-item:nth-child(3) span": "May 2022 - Jun. 2023",
+          ".timeline-item:nth-child(3) h3": "Consultant | Senior Systems Analyst &middot; Pantheon / ExxonMobil",
+          ".timeline-item:nth-child(3) p": "Supported and improved Ariba Java systems, production and acceptance environments, reporting, Azure Data Factory and Azure Function Apps in a global team.",
+          ".timeline-item:nth-child(4) span": "2018 - 2022",
+          ".timeline-item:nth-child(4) h3": "Senior Systems Analyst | Tech Lead | IT Analyst",
+          ".timeline-item:nth-child(4) p": "Worked at Matera, Wipro and Tauste with Java, Spring Boot, Oracle SQL, PL/SQL, Swagger, Oracle Advanced Queue, OSB, Oracle Forms, Oracle Reports, Node.js and Python.",
+          ".timeline-item:nth-child(5) h3": "Computer Engineering &middot; Univesp Oficial",
+          ".timeline-item:nth-child(5) p": "Academic background in technology, engineering and computer systems fundamentals.",
+          ".timeline-item:nth-child(6) h3": "Production Engineering &middot; Univem",
+          ".timeline-item:nth-child(6) p": "Foundation in processes, management, continuous improvement and operational analysis.",
+          "#competencias .section-heading .eyebrow": "Skills",
+          "#competencias h2": "A technical stack grounded in solution architecture, Oracle and integrations.",
+          "#competencias .section-heading p:last-child": "The qualifications below consolidate top skills and technologies from my LinkedIn resume.",
+          ".skill-card:nth-child(1) h3": "Oracle and architecture",
+          ".skill-card:nth-child(2) h3": "Development",
+          ".skill-card:nth-child(3) h3": "Cloud and integrations",
+          ".skill-card:nth-child(4) h3": "Retail and enterprise",
+          ".skill-card:nth-child(4) li:nth-child(4)": "Critical systems",
+          ".skill-card:nth-child(4) li:nth-child(5)": "Technical support",
+          ".skill-card:nth-child(5) h3": "Tools",
+          ".skill-card:nth-child(6) h3": "Languages",
+          ".skill-card:nth-child(6) li:nth-child(1)": "Native Portuguese",
+          ".skill-card:nth-child(6) li:nth-child(2)": "Fluent English",
+          ".skill-card:nth-child(6) li:nth-child(3)": "Basic/intermediate Spanish",
+          "#certificacoes .section-heading .eyebrow": "Certifications",
+          "#certificacoes h2": "Certifications and qualifications aligned with LinkedIn and public badges.",
+          "#certificacoes .section-heading p:last-child": "Badges open public credentials when available. This section also includes courses and certifications listed publicly on LinkedIn.",
+          ".cert-card:nth-child(1) p": "Oracle &middot; public credential",
+          ".cert-card:nth-child(2) p": "Oracle &middot; public credential",
+          ".cert-card:nth-child(3) p": "Oracle &middot; issued Dec. 2021",
+          ".cert-card:nth-child(4) p": "Oracle &middot; issued Dec. 2021",
+          ".cert-card:nth-child(5) p": "Oracle &middot; public credential",
+          ".cert-card:nth-child(7) p": "Certification shared on LinkedIn.",
+          ".cert-card:nth-child(8) h3": "Swagger: Documenting your APIs",
+          ".cert-card:nth-child(8) p": "Course listed on LinkedIn &middot; issued Dec. 2021.",
+          ".cert-card:nth-child(9) p": "Course listed on LinkedIn &middot; issued Oct. 2021.",
+          ".cert-card:nth-child(10) p": "Certification listed in the LinkedIn resume.",
+          ".cert-card:nth-child(11) p": "Certification listed in the LinkedIn resume.",
+          ".quote p": "&ldquo;Recognized for database expertise, complex queries, support to senior team members, frequent communication with global clients and commitment during critical production situations.&rdquo;",
+          ".quote cite": "Summary of a public LinkedIn recommendation",
+          "#contato .section-heading .eyebrow": "Contact",
+          "#contato h2": "Let us talk about systems, data and integrations.",
+          "#contato .panel h3": "Available for professional networking",
+          "#contato .panel p": "Get in touch for opportunities, technical partnerships, conversations about Oracle, cloud, retail or enterprise software development.",
+          ".footer-links a:nth-child(1)": "Top"
+        }
+      }
+    };
+
+    const brazilTimeZones = new Set([
+      "America/Sao_Paulo",
+      "America/Noronha",
+      "America/Belem",
+      "America/Fortaleza",
+      "America/Recife",
+      "America/Araguaina",
+      "America/Maceio",
+      "America/Bahia",
+      "America/Santarem",
+      "America/Cuiaba",
+      "America/Campo_Grande",
+      "America/Manaus",
+      "America/Porto_Velho",
+      "America/Boa_Vista",
+      "America/Rio_Branco",
+      "America/Eirunepe"
+    ]);
+
+    function getSavedLanguage() {
+      try {
+        return localStorage.getItem("preferredLanguage");
+      } catch (error) {
+        return null;
+      }
     }
-}
 
-// Used to toggle the menu on small screens when clicking on the menu button
-function toggleFunction() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
+    function saveLanguage(language) {
+      try {
+        localStorage.setItem("preferredLanguage", language);
+      } catch (error) {
+        return;
+      }
     }
-}
-</script>
 
+    function detectPreferredLanguage() {
+      const savedLanguage = getSavedLanguage();
+      if (savedLanguage === "pt" || savedLanguage === "en") {
+        return savedLanguage;
+      }
+
+      const browserLanguages = navigator.languages || [navigator.language || ""];
+      const hasBrazilianPortuguese = browserLanguages.some((language) => language.toLowerCase() === "pt-br");
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+      return hasBrazilianPortuguese || brazilTimeZones.has(timeZone) ? "pt" : "en";
+    }
+
+    function setLanguage(language, shouldPersist = false) {
+      const dictionary = translations[language] || translations.en;
+      const metaDescription = document.querySelector('meta[name="description"]');
+
+      document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
+      document.title = dictionary.title;
+      if (metaDescription) {
+        metaDescription.setAttribute("content", dictionary.description);
+      }
+
+      Object.entries(dictionary.attributes).forEach(([selector, attributes]) => {
+        const element = document.querySelector(selector);
+        if (!element) {
+          return;
+        }
+
+        Object.entries(attributes).forEach(([name, value]) => {
+          element.setAttribute(name, value);
+        });
+      });
+
+      Object.entries(dictionary.text).forEach(([selector, value]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          element.innerHTML = value;
+        }
+      });
+
+      languageButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.setLang === language));
+      });
+
+      const isMenuOpen = menu.classList.contains("is-open");
+      toggle.setAttribute("aria-label", isMenuOpen ? menuLabels[language].close : menuLabels[language].open);
+
+      if (shouldPersist) {
+        saveLanguage(language);
+      }
+    }
+
+    toggle.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("is-open");
+      const language = document.documentElement.lang === "pt-BR" ? "pt" : "en";
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? menuLabels[language].close : menuLabels[language].open);
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        const language = document.documentElement.lang === "pt-BR" ? "pt" : "en";
+        menu.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", menuLabels[language].open);
+      });
+    });
+
+    languageButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.setLang, true);
+      });
+    });
+
+    setLanguage(detectPreferredLanguage());
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
